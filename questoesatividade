@@ -1,0 +1,166 @@
+<!--2) Exemplos de métodos do objeto -->
+
+<div id="minhaDiv">
+  <p>Primeiro parágrafo</p>
+  <p>Segundo parágrafo</p>
+</div>
+const div = document.getElementById("minhaDiv");
+console.log(div.textContent);
+const paragrafos = document.getElementsByTagName("p");
+for (let i = 0; i < paragrafos.length; i++) {
+  console.log(paragrafos[i].textContent);
+}
+
+<!--Código para contar parágrafos em uma div -->
+
+<div id="conteudo">
+  <p>Texto 1</p>
+  <p>Texto 2</p>
+</div>
+
+<div id="resultado"></div>
+
+<script>
+  const div = document.getElementById("conteudo");
+  const paragrafos = div.getElementsByTagName("p");
+  const resultado = document.getElementById("resultado");
+  resultado.textContent = `Total de parágrafos: ${paragrafos.length}`;
+</script>
+
+<!--Adicionar botão "Limpar" -->
+
+<p id="paragrafo">Clique no botão abaixo para alterar o texto deste parágrafo:</p>
+<button id="botao">Clique aqui</button>
+<button id="limpar">Limpar</button>
+var botao = document.getElementById("botao");
+var limpar = document.getElementById("limpar");
+
+botao.addEventListener("click", function() {
+  var paragrafo = document.getElementById("paragrafo");
+  paragrafo.textContent = "O texto deste parágrafo foi alterado!";
+});
+
+limpar.addEventListener("click", function() {
+  var paragrafo = document.getElementById("paragrafo");
+  paragrafo.textContent = "";
+});
+
+<!--6) Alterar propriedade CSS via DOM html Copiar Editar-->
+
+<p id="texto">Texto para mudar cor</p>
+<button onclick="alterarCor()">Mudar cor</button>
+
+<script>
+function alterarCor() {
+  document.getElementById("texto").style.color = "red";
+}
+</script>
+
+<!--7) Copiar conteúdo em caixa alta-->
+
+<input type="text" id="origem">
+<input type="text" id="destino">
+<button onclick="copiar()">Copiar em maiúsculas</button>
+
+<script>
+function copiar() {
+  const origem = document.getElementById("origem").value;
+  document.getElementById("destino").value = origem.toUpperCase();
+}
+</script>
+
+<!--8) Botão de alto contraste-->
+<button onclick="altoContraste()">Alto contraste</button>
+<button onclick="resetarEstilo()">Resetar</button>
+
+<script>
+function altoContraste() {
+  document.body.style.backgroundColor = "black";
+  document.body.style.color = "white";
+}
+
+function resetarEstilo() {
+  document.body.style.backgroundColor = "";
+  document.body.style.color = "";
+}
+</script>
+
+<!--9) Aumentar/reduzir tamanho do texto-->
+<button onclick="aumentarTexto()">Aumentar</button>
+<button onclick="diminuirTexto()">Diminuir</button>
+
+<script>
+let tamanho = 16;
+
+function aplicarTamanho() {
+  document.body.style.fontSize = tamanho + "px";
+}
+
+function aumentarTexto() {
+  tamanho += 2;
+  aplicarTamanho();
+}
+
+function diminuirTexto() {
+  tamanho -= 2;
+  aplicarTamanho();
+}
+</script>
+
+<!--10) Calculadora com 4 operações e radio buttons-->
+<input type="number" id="n1">
+<input type="number" id="n2"><br>
+
+<input type="radio" name="op" value="+" checked> Somar
+<input type="radio" name="op" value="-"> Subtrair
+<input type="radio" name="op" value="*"> Multiplicar
+<input type="radio" name="op" value="/"> Dividir
+
+<button onclick="calcular()">Calcular</button>
+<p id="resultado"></p>
+
+<script>
+function calcular() {
+  const n1 = parseFloat(document.getElementById("n1").value);
+  const n2 = parseFloat(document.getElementById("n2").value);
+  const operacao = document.querySelector('input[name="op"]:checked').value;
+  let resultado = 0;
+
+  switch (operacao) {
+    case '+': resultado = n1 + n2; break;
+    case '-': resultado = n1 - n2; break;
+    case '*': resultado = n1 * n2; break;
+    case '/': resultado = n1 / n2; break;
+  }
+
+  document.getElementById("resultado").textContent = "Resultado: " + resultado;
+}
+</script>
+
+<!--11) Adicionar conteúdo em lista não ordenada-->
+<input type="text" id="texto">
+<button onclick="adicionar()">Adicionar</button>
+<ul id="lista"></ul>
+
+<script>
+function adicionar() {
+  const valor = document.getElementById("texto").value;
+  const li = document.createElement("li");
+  li.textContent = valor;
+  document.getElementById("lista").appendChild(li);
+}
+</script>
+
+<!--12) Adicionar conteúdo em elemento <select>-->
+<input type="text" id="texto">
+<button onclick="adicionar()">Adicionar</button>
+<select id="selecao"></select>
+
+<script>
+function adicionar() {
+  const valor = document.getElementById("texto").value;
+  const option = document.createElement("option");
+  option.textContent = valor;
+  document.getElementById("selecao").appendChild(option);
+}
+</script>
